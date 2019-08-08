@@ -1,0 +1,1 @@
+![newColors](doc/newColors.jpg)
