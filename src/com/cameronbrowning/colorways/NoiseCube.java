@@ -22,7 +22,7 @@ public class NoiseCube extends PGraphics3D {
         initialize(p.width,p.height, p, p.dataPath("/Users/cameron.browning/IdeaProjects/Colorways/data"));
         myFrameCount = 0;
         // p.println(p.dataPath("/Users/cameron.browning/IdeaProjects/Colorways/data"));
-        palette = p.loadImage("/Users/cameron.browning/IdeaProjects/Colorways/data/palette.png");
+        palette = p.loadImage("data/colors.png");
         palette.loadPixels();
         // NoiseScrollerp.noiseSeed(0);
         img = p.createImage(32,32, RGB);
@@ -62,11 +62,11 @@ public class NoiseCube extends PGraphics3D {
                 for(int z = 0; z < 32; z++){
                    // stroke(color(palette.pixels[(int)(p.noise(x/10.0f,(float)y/10.0f)*255)+myFrameCount] ));
                     noStroke();
-                    fill(color(palette.pixels[(int)(p.noise(x/10.0f,(float)y/10.0f, (float)z/10.0f)*255)+myFrameCount] ));
+                    fill(color(palette.pixels[(int)(p.noise(x/10.0f,(float)y/10.0f, (float)z/10.0f)*255)+(int)((float)myFrameCount/5.0f)] ));
                  //   point(x*10-160,y*10-160, z*10-160);
                 pushMatrix();
-                    translate(x*10-160,y*10-160,z*10-160);
-                    box(green(color(palette.pixels[(int)(p.noise((float)x/10.0f,(float)y/10.0f,(float)z/10.0f)*255)+myFrameCount] ))/((float)Math.sin(myFrameCount/100.0f)*50.0f+76.0f));
+                    translate(x*25-160*2.5f,y*25-160*2.5f,z*25-160*2.5f);
+                    box(Math.max(red((int)((float)color(palette.pixels[(int)(p.noise(x/10.0f,(float)y/10.0f, (float)z/10.0f)*255)+myFrameCount] )))/255.0f*50.0f - 25.0f, 0.0f));
                 popMatrix();
                 }
 
